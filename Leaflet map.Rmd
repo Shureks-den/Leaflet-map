@@ -1,0 +1,29 @@
+---
+title: "Leflet map"
+author: "Alexander Klonov"
+date: "10 10 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+library(leaflet)
+myIcons<-makeIcon(
+    iconUrl = "https://assets.faceit-cdn.net/avatars/cd087465-937c-471e-9f44-8b092c63bc23_1560613353683.jpg",
+    iconWidth = 31*215/230, iconHeight = 31, iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+poputmessage<-c(
+    "<a href='https://vk.com/not_a_shurik'>I live here!</a>",
+    "<a href='https://vk.com/u3_llcuxylllku_c_llpu8etom'>And here lives my friend!</a>"
+)
+adres<-data.frame(
+    lat=c(55.427038,55.803559),
+    lng=c(37.773369,37.844378)
+)
+adres %>% leaflet() %>% addTiles() %>% 
+    addMarkers(icon =myIcons ,popup = poputmessage) 
+
+```
